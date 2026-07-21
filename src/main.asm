@@ -2,17 +2,20 @@ global _start
 
 section .data 
     ; title
-    title:          db             '========================================', 10
+    title_msg:      db             '========================================', 10
                     db 27, "[32m", '        ASM SYSCALL CALCULATOR          ', 27, "[0m", 10
                     db             '========================================', 10
-                    db 10, 27, "[36m",
+    len_title:      equ $ - title_msg
+
+    ; menu
+    menu_msg:       db 10, 27, "[36m",
                     db '[1] Addition                            ', 10
                     db '[2] Subtraction                         ', 10
                     db '[3] Multiplication                      ', 10
                     db '[4] Division                            ', 10
                     db '[Q] Exit                                ', 10
                     db 10, 27, "[0m"
-    len_title:      equ $ - title
+    len_menu:       equ $ - menu_msg
 
     ; num1 
     prompt1:        db 27, "[33m", 'Enter your first number: ', 27, "[0m"
@@ -49,6 +52,8 @@ section .data
     clear_all:      db 0x1B, "[H", 0x1B, "[2J", 0x1B, "[3J"
     clear_len:      equ $ - clear_all
 
+    delay_time:     dq 0, 20000000
+
 section .bss
     buf_num1 resb 16
     buf_num2 resb 16
@@ -65,8 +70,13 @@ _start:
     call clear_screen
 
     ; title
-    mov rsi, title
-    mov rdx, len_title
+    mov r8, title_msg
+    mov r9, len_title
+    call animate_title
+
+    ; menu
+    mov rsi, menu_msg
+    mov rdx, len_menu
     call print_str
 
     ; num1
@@ -129,7 +139,7 @@ _start:
     mov rsi, err_op_msg
     mov rdx, len_err_op
     call print_str
-    
+
     ; exit
     jmp exit
 
@@ -181,6 +191,26 @@ _start:
     mov rdx, 1
     call print_str
     jmp exit
+
+animate_title:
+.loop:
+    cmp r9, 0             
+    je .done
+
+    mov rsi, r8           
+    mov rdx, 1              
+    call print_str
+
+    mov rax, 35      
+    mov rdi, delay_time   
+    xor rsi, rsi          
+    syscall
+
+    inc r8              
+    dec r9                 
+    jmp .loop        
+.done:
+    ret 
 
 clear_screen:
     mov rsi, clear_all

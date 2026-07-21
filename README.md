@@ -21,10 +21,14 @@ A simple command-line calculator written in x86-64 Assembly using raw Linux syst
 - Integer multiplication
 - Integer division
 - Division-by-zero handling
+- Invalid operation handling
 - Manual string-to-integer conversion
 - Manual integer-to-string conversion
 - Raw Linux syscalls (`read`, `write`, `exit`)
-- No libc
+- No libc dependency
+- ANSI color support for UI elements
+- Screen clearing on startup
+- Exit on 'q' input at any prompt
 - NASM syntax
 
 ## Requirements
