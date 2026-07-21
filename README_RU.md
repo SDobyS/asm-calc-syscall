@@ -91,8 +91,8 @@ make run
 
 ## Планы
 
-- [x] Калькулятор на libc (System V AMD64 ABI)
-- [x] Калькулятор на Linux syscalls (no libc) 
+- [x] Калькулятор на libc (ABI) - 🔗 *[asm-calc-libc](https://github.com/SDobyS/asm-calc-libc)*
+- [x] Калькулятор на чистых syscall - 🔗 *[asm-calc-syscall](https://github.com/SDobyS/asm-calc-syscall)*
 - [ ] 16-битный BIOS-калькулятор (boot sector)
 
 ## Лицензия
