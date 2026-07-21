@@ -3,6 +3,7 @@ global _start
 section .data 
     ; title
     title:          db '=== Syscall Calculator ===', 10
+
     len_title:      equ $ - title
 
     ; num1 
@@ -29,10 +30,14 @@ section .data
     res_msg:        db 'Result: '
     len_res:        equ $ - res_msg
 
-    err_msg     db "Cannot be divided by 0!", 10
-    len_err     equ $ - err_msg
+    err_msg:        db "Cannot be divided by 0!", 10
+    len_err:        equ $ - err_msg
 
-    newline     db 10
+    newline:        db 10
+
+    ; clear screen
+    clear_all:      db 0x1B, "[H", 0x1B, "[2J", 0x1B, "[3J"
+    clear_len:      equ $ - clear_all
 
 section .bss
     buf_num1 resb 16
@@ -46,6 +51,9 @@ section .bss
 section .text
 
 _start:
+    ; clear screen 
+    call clear_screen
+
     ; title
     mov rsi, title
     mov rdx, len_title
@@ -152,6 +160,12 @@ _start:
     mov rdx, 1
     call print_str
     jmp exit
+
+clear_screen:
+    mov rsi, clear_all
+    mov rdx, clear_len
+    call print_str
+    ret
 
 input_str:
     mov rax, 0
