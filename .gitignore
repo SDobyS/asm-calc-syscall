@@ -1,0 +1,39 @@
+# Object files
+*.o
+*.obj
+
+# Executables
+calculator
+*.out
+*.exe
+
+# Build directories
+bin/
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Vim
+*.swp
+*.swo
+
+# Debug
+*.gdb_history
+*.dSYM/
+
+# Logs
+*.log
+
+# Temporary
+tmp/
+temp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Personal notes
+notes/
