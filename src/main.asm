@@ -2,8 +2,15 @@ global _start
 
 section .data 
     ; title
-    title:          db '=== Syscall Calculator ===', 10
-
+    title:          db '========================================', 10
+                    db '        ASM SYSCALL CALCULATOR          ', 10
+                    db '========================================', 10
+                    db 10
+                    db '[1] Addition                            ', 10
+                    db '[2] Subtraction                         ', 10
+                    db '[3] Multiplication                      ', 10
+                    db '[4] Division                            ', 10
+                    db 10
     len_title:      equ $ - title
 
     ; num1 
@@ -15,11 +22,7 @@ section .data
     len_prompt2:    equ $ - prompt2
 
     ; operatiom
-    prompt3:        db '1. +', 10 
-                    db '2. -', 10 
-                    db '3. *', 10 
-                    db '4. /', 10  
-                    db 'Enter your operation: '
+    prompt3:        db 'Enter your operation: '
     len_prompt3:    equ $ - prompt3
 
     OP_ADD:         equ 1
