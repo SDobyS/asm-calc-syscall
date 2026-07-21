@@ -52,7 +52,7 @@ section .data
     clear_all:      db 0x1B, "[H", 0x1B, "[2J", 0x1B, "[3J"
     clear_len:      equ $ - clear_all
 
-    delay_time:     dq 0, 20000000
+    delay_time:     dq 0, 10000000
 
 section .bss
     buf_num1 resb 16
@@ -196,16 +196,13 @@ animate_title:
 .loop:
     cmp r9, 0             
     je .done
-
     mov rsi, r8           
     mov rdx, 1              
     call print_str
-
     mov rax, 35      
     mov rdi, delay_time   
     xor rsi, rsi          
     syscall
-
     inc r8              
     dec r9                 
     jmp .loop        
@@ -248,13 +245,18 @@ exit:
 
 ; str to int
 str_to_int:
-    xor rax, rax      
-    xor rcx, rcx     
+    xor rax, rax
+    xor rcx, rcx
+    xor r8, r8
+    cmp byte [rsi], '-'
+    jne .loop
+    mov r8, 1
+    inc rcx
 .loop:
     movzx rdx, byte [rsi + rcx]
-    cmp dl, 10          ; '\n'
+    cmp dl, 10  
     je .done
-    cmp dl, 0           ; '\0'
+    cmp dl, 0
     je .done
     cmp dl, '0'
     jb .done
@@ -266,6 +268,10 @@ str_to_int:
     inc rcx
     jmp .loop
 .done:
+    test r8, r8
+    jz .positive
+    neg rax
+.positive:
     ret
 
 ; int to print
@@ -275,10 +281,18 @@ int_to_print:
     mov rsi, buf_out + 20
     mov byte [rsi], 0
     test rax, rax
+    jge .positive
+    neg rax   
+    mov r8b, 1        
+    jmp .check_zero
+.positive:
+    xor r8d, r8d
+.check_zero:
+    test rax, rax
     jnz .loop
     dec rsi
     mov byte [rsi], '0'
-    jmp .print
+    jmp .sign
 .loop:
     xor rdx, rdx
     div rbx
@@ -287,6 +301,11 @@ int_to_print:
     mov [rsi], dl
     test rax, rax
     jnz .loop
+.sign:
+    test r8b, r8b
+    jz .print
+    dec rsi
+    mov byte [rsi], '-'
 .print:
     mov rdx, buf_out + 20
     sub rdx, rsi
