@@ -62,19 +62,21 @@ or
 ## Example
 
 ```text
-=== Syscall Calculator ===
+========================================
+        ASM SYSCALL CALCULATOR          
+========================================
 
-Enter your first number: 10
-Enter your second number: 20
+[1] Addition                            
+[2] Subtraction                         
+[3] Multiplication                      
+[4] Division                            
+[Q] Exit                                
 
-1. +
-2. -
-3. *
-4. /
-
-Enter your operation: 1
-
-Result: 30
+Enter your first number: 1
+Enter your second number: 2
+Enter your operation: 3
+Result: 2
+Exit...
 ```
 
 ## Project Structure
