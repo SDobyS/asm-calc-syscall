@@ -65,23 +65,9 @@ make run
 
 ## Пример работы
 
-```text
-========================================
-        ASM SYSCALL CALCULATOR          
-========================================
-
-[1] Addition                            
-[2] Subtraction                         
-[3] Multiplication                      
-[4] Division                            
-[Q] Exit                                
-
-Enter your first number: 1
-Enter your second number: 2
-Enter your operation: 3
-Result: 2
-Exit...
-```
+<p align="center">
+  <img src="docs/example.png" width="800">
+</p>
 
 ## Структура проекта
 
