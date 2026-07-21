@@ -92,7 +92,7 @@ The project was created to practice x86-64 Assembly, Linux syscalls, manual inpu
 
 - [x] Calculator on libc (System V ABI) - 🔗 *[asm-calc-libc](https://github.com/SDobyS/asm-calc-libc)*
 - [x] Calculator on raw syscalls (no libc) - 🔗 *[asm-calc-syscall](https://github.com/SDobyS/asm-calc-syscall)*
-- [ ] 16-bit BIOS calculator (boot sector)
+- [x] 16-bit BIOS calculator with custom bootloader - 🔗 *[asm-calc-bios](https://github.com/SDobyS/asm-calc-bios)*
 
 ## License
 

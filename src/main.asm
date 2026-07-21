@@ -18,16 +18,16 @@ section .data
     len_menu:       equ $ - menu_msg
 
     ; num1 
-    prompt1:        db 27, "[33m", 'Enter your first number: ', 27, "[0m"
-    len_prompt1:    equ $ - prompt1
+    prompt1_msg:    db 27, "[33m", 'Enter your first number: ', 27, "[0m"
+    len_prompt1:    equ $ - prompt1_msg
 
     ; num2
-    prompt2:        db 27, "[33m", 'Enter your second number: ', 27, "[0m"
-    len_prompt2:    equ $ - prompt2
+    prompt2_msg:    db 27, "[33m", 'Enter your second number: ', 27, "[0m"
+    len_prompt2:    equ $ - prompt2_msg
 
     ; operatiom
-    prompt3:        db 27, "[33m", 'Enter your operation: ', 27, "[0m"
-    len_prompt3:    equ $ - prompt3
+    prompt3_msg:    db 27, "[33m", 'Enter your operation: ', 27, "[0m"
+    len_prompt3:    equ $ - prompt3_msg
 
     OP_ADD:         equ 1
     OP_SUB:         equ 2
@@ -81,7 +81,7 @@ _start:
 
     ; num1
     ; print prompt1
-    mov rsi, prompt1
+    mov rsi, prompt1_msg
     mov rdx, len_prompt1
     call print_str
 
@@ -96,7 +96,7 @@ _start:
 
     ; num2
     ; print prompt2
-    mov rsi, prompt2
+    mov rsi, prompt2_msg
     mov rdx, len_prompt2
     call print_str
 
@@ -111,7 +111,7 @@ _start:
 
     ; oper
     ; print prompt3
-    mov rsi, prompt3
+    mov rsi, prompt3_msg
     mov rdx, len_prompt3
     call print_str
 

@@ -93,7 +93,7 @@ make run
 
 - [x] Калькулятор на libc (ABI) - 🔗 *[asm-calc-libc](https://github.com/SDobyS/asm-calc-libc)*
 - [x] Калькулятор на чистых syscall - 🔗 *[asm-calc-syscall](https://github.com/SDobyS/asm-calc-syscall)*
-- [ ] 16-битный BIOS-калькулятор (boot sector)
+- [x] 16-битный BIOS калькулятор с собственным bootloader - 🔗 *[asm-calc-bios](https://github.com/SDobyS/asm-calc-bios)*
 
 ## Лицензия
 
