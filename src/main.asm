@@ -2,9 +2,9 @@ global _start
 
 section .data 
     ; title
-    title_msg:      db             '========================================', 10
-                    db 27, "[32m", '        ASM SYSCALL CALCULATOR          ', 27, "[0m", 10
-                    db             '========================================', 10
+    title_msg:      db             '============================================', 10
+                    db 27, "[32m", '          ASM SYSCALL CALCULATOR            ', 27, "[0m", 10
+                    db             '============================================', 10
     len_title:      equ $ - title_msg
 
     ; menu
